@@ -1,8 +1,8 @@
 const fs = require("fs"),
     Client = require("ssh2-sftp-client"),
     sftp = new Client(),
-    vocabulary = { "ё": "yo", "й": "i", "ц": "ts", "у": "u", "к": "k", "е": "e", "н": "n", "г": "g", "ш": "sh", "щ": "sch", "з": "z", "х": "h", "ъ": "", "ф": "f", "ы": "i", "в": "v", "а": "a", "п": "p", "р": "r", "о": "o", "л": "l", "д": "d", "ж": "zh", "э": "e", "я": "ya", "ч": "ch", "с": "s", "м": "m", "и": "i", "т": "t", "ь": "", "б": "b", "ю": "yu", "(": "", ")": "", " ": "_" },
-    destFolder = "uploads",
+    vocabulary = { "ё": "yo", "й": "i", "ц": "ts", "у": "u", "к": "k", "е": "e", "н": "n", "г": "g", "ш": "sh", "щ": "sch", "з": "z", "х": "h", "ъ": "", "ф": "f", "ы": "i", "в": "v", "а": "a", "п": "p", "р": "r", "о": "o", "л": "l", "д": "d", "ж": "zh", "э": "e", "я": "ya", "ч": "ch", "с": "s", "м": "m", "и": "i", "т": "t", "ь": "", "б": "b", "ю": "yu", "(": "", ")": "", " ": "_", ",": "", "[": "", "]": "", "{": "", "}": "" },
+    destFolder = "marketplaces",
     inputFolder = "input",
     today = (new Date()).toISOString().split('T')[0],
     uploadFolder = "src/" + (new Date()).toISOString().split('T')[0],
@@ -50,7 +50,3 @@ function logLinks(arr) {
         console.log(link)
     })
 }
-
-// getFiles().then((data) => {
-//     logLinks(data)
-// })
