@@ -24,16 +24,16 @@ sftp.connect({
     console.error('Error: ', err);
 });
 
-async function getFiles() {
-    let promise = new Promise((resolve, rej) => {
+function getFiles() {
+    return new Promise((resolve, rej) => {
         fs.readdir('./' + inputFolder, (err, files) => {
             let arr = []
             if (files.length) {
                 fs.mkdirSync(`./${uploadFolder}`, { recursive: true })
             }
-            files.forEach(file => {
+            files.forEach(async (file) => {
                 const renameFile = [...file.toLowerCase()].map(el => vocabulary[el] ? vocabulary[el] : el).join('')
-                fs.copyFile(`./${inputFolder}/${file}`, `./${uploadFolder}/${renameFile}`, (err) => {
+                await fs.copyFile(`./${inputFolder}/${file}`, `./${uploadFolder}/${renameFile}`, (err) => {
                     if (err) console.error(err);
                 })
                 arr.push(`${linkStart}/${uploadFolder.replace('src/', '')}/${renameFile}`)
@@ -41,12 +41,11 @@ async function getFiles() {
             resolve(arr)
         });
     })
-    let rslt = await promise
-    return rslt
 }
 
 function logLinks(arr) {
     arr.forEach((link) => {
         console.log(link)
     })
+    return
 }
