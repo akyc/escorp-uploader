@@ -7,11 +7,9 @@ git clone https://github.com/akyc/escorp-uploader.git
 ```bash 
 cd escorp-uploader && npm i
 ```
-* создать папку input в корне и скопировать в нее нужные файлы
-```bash
-mkdir input
-```
+* в папку ```input``` скопировать нужные файлы
+* переименовать ```.env.example``` в ```.env``` и настроить доступы к серверу по sftp
 * запустить js через node
 ```bash
-node rename.js
+node index.js
 ```

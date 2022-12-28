@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require("fs"),
     Client = require("ssh2-sftp-client"),
     sftp = new Client(),
@@ -7,14 +8,13 @@ const fs = require("fs"),
     today = (new Date()).toISOString().split('T')[0],
     uploadFolder = "src/" + (new Date()).toISOString().split('T')[0],
     linkStart = "https://eurosvet.ru/tmp/" + destFolder,
-    serverFolder = "/www/sites/www.eurosvet.ru/www/public/tmp/" + destFolder
-
+    serverFolder = "/www/sites/www.eurosvet.ru/www/public/tmp/" + destFolder;
 
 sftp.connect({
-    host: '195.16.54.238',
-    port: '22',
-    username: 'designer',
-    password: 'jFsW#lkBHggz9!!y'
+    host: process.env.SFTP_HOST,
+    port: process.env.SFTP_PORT || 22,
+    username: process.env.SFTP_USERNAME,
+    password: process.env.SFTP_PASSWORD
 }).then(() => {
     getFiles().then((data) => {
         logLinks(data)
