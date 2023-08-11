@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "ssh2-sftp-client": "^9.0.4"
+    "dotenv": "16.0.3",
+    "ssh2-sftp-client": "9.0.4"
   }
 }
